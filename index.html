@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rabbit Running Animation</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #90EE90;
+  }
+
+  .rabbit {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background-color: #FFF;
+    border-radius: 30px 30px 20px 20px;
+    animation: body-bobbing 0.5s infinite;
+  }
+
+  .ear {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    background-color: #FFF;
+    border-radius: 20px 20px 0 0;
+    top: -30px;
+  }
+
+  .ear.left {
+    left: 5px;
+    transform: rotate(-30deg);
+  }
+
+  .ear.right {
+    right: 5px;
+    transform: rotate(30deg);
+  }
+
+  .leg {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background-color: #FFF;
+    border-radius: 5px;
+    bottom: -10px;
+  }
+
+  .leg.left {
+    left: 10px;
+    animation: run-left-leg 0.5s infinite;
+  }
+
+  .leg.right {
+    right: 10px;
+    animation: run-right-leg 0.5s infinite;
+  }
+
+  .eye {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 50%;
+    top: 5px;
+  }
+
+  .eye.left {
+    left: 15px;
+  }
+
+  .eye.right {
+    right: 15px;
+  }
+
+  .nose {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #FF69B4;
+    border-radius: 50%;
+    top: 10px;
+    left: 26px;
+  }
+
+  @keyframes run-left-leg {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    25% { transform: translateY(-5px) rotate(-45deg); }
+    50% { transform: translateY(0) rotate(-90deg); }
+  }
+
+  @keyframes run-right-leg {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    25% { transform: translateY(-5px) rotate(45deg); }
+    50% { transform: translateY(0) rotate(90deg); }
+  }
+
+  @keyframes body-bobbing {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+</style>
+</head>
+<body>
+
+<div class="rabbit">
+  <div class="ear left"></div>
+  <div class="ear right"></div>
+  <div class="leg left"></div>
+  <div class="leg right"></div>
+  <div class="eye left"></div>
+  <div class="eye right"></div>
+  <div class="nose"></div>
+</div>
+
+</body>
+</html>
