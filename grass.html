@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Grass</title>
+<style>
+  /* Background color for the ground */
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 100vh;
+    background: #87ceeb; /* Sky blue background */
+    overflow: hidden;
+  }
+
+  .grass-container {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background: #228B22; /* Green ground color */
+    overflow: hidden;
+  }
+
+  /* Individual grass blade styling */
+  .grass {
+    position: absolute;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to top, #228B22, #00ff00);
+    border-radius: 1px;
+    transform-origin: bottom;
+    animation: sway 2s infinite ease-in-out;
+  }
+
+  /* Keyframes for grass swaying effect */
+  @keyframes sway {
+    0% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    100% { transform: rotate(-5deg); }
+  }
+</style>
+</head>
+<body>
+
+<div class="grass-container" id="grassContainer">
+  <svg width="120" height="100" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Body -->
+  <rect x="30" y="40" width="60" height="30" rx="15" ry="15" fill="#FFF" />
+
+  <!-- Ears -->
+  <rect x="33" y="10" width="20" height="40" rx="10" ry="10" fill="#FFF" transform="rotate(-20 50 20)" />
+  <rect x="68" y="10" width="20" height="40" rx="10" ry="10" fill="#FFF" transform="rotate(20 70 20)" />
+
+  <!-- Legs -->
+  <rect x="40" y="60" width="10" height="20" rx="5" ry="5" fill="#FFF" />
+  <rect x="70" y="60" width="10" height="20" rx="5" ry="5" fill="#FFF" />
+
+  <!-- Eyes -->
+  <circle cx="45" cy="50" r="3" fill="#000" />
+  <circle cx="75" cy="50" r="3" fill="#000" />
+
+  <!-- Nose -->
+  <circle cx="60" cy="55" r="4" fill="#FF69B4" />
+</svg>
+</div>
+
+<script>
+  // Number of grass blades
+  const numberOfBlades = 100;
+
+  // Reference to the container
+  const container = document.getElementById('grassContainer');
+
+  // Generate grass blades
+  for (let i = 0; i < numberOfBlades; i++) {
+    const blade = document.createElement('div');
+    blade.classList.add('grass');
+    
+    // Randomize height and position for a natural effect
+    const randomHeight = Math.random() * 30 + 20; // Height between 20px and 50px
+    const randomPosition = Math.random() * 100; // Position between 0% and 100%
+    const randomDuration = Math.random() * 1 + 1.5; // Animation duration between 1.5s and 2.5s
+
+    blade.style.height = `${randomHeight}px`;
+    blade.style.left = `${randomPosition}%`;
+    blade.style.animationDuration = `${randomDuration}s`;
+
+    // Append each blade to the container
+    container.appendChild(blade);
+  }
+</script>
+
+</body>
+</html>
